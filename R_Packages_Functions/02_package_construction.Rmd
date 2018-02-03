@@ -1,0 +1,204 @@
+---
+title: "R: Functions and Packages"
+subtitle: "Part 2: Basic package construction"
+author: "Mik Black"
+date: "8 February 2017"
+output: ioslides_presentation
+---
+
+## Before we start
+
+ - There is a perfectly good Software Carpentry lesson on creating R packages, but we will not be using it:
+ 
+ http://swcarpentry.github.io/r-novice-inflammation/08-making-packages-R/
+
+ - Why not?  Because I had already written some of my slides when Murray pointed out that I had re-invented the wheel.
+ 
+   - I'm sure there is a ResBaz-related life-lesson in there somewhere...
+ 
+ - I really just wanted a reason to show you Hilary's "cat cup".
+ 
+
+## Attribution
+
+<img src="https://hilaryparker.files.wordpress.com/2014/10/cropped-img_20140902_1804591.jpg" height="300">
+
+Thanks to Hilary Parker ([\@hspter](https://twitter.com/hspter)) - code adapted from:
+
+http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
+
+
+## Getting ready
+
+ - To get started, we need to install the `devtools` and `roxygen` packages.
+
+```{r, eval=FALSE}
+install.packages('devtools')
+library("devtools")
+devtools::install_github("klutometis/roxygen")
+library(roxygen2)
+```
+
+```{r, echo=FALSE}
+library(devtools)
+library(roxygen2)
+```
+
+ - `devtools` (Hadley Wickham & Winston Chang): Tools to Make Developing R Packages Easier
+ - `roxygen2` (Hadley Wickham, Peter Danenberg & Manuel Eugster):  In-source Documentation for R
+
+## Setting up
+
+ - Use the `create()` function from `devtools` to set up a basic package structure:
+
+```{r, echo=FALSE}
+system('rm -Rf cats')
+## remove.packages('cats')
+```
+
+```{r}
+create("cats")
+```
+
+## What did that do?
+
+ - Have a look at the "cats" folder, inside your working directory (you set that to a sensible place, right?) to see what the `create()` command did:
+
+```{r}
+list.files(path = "cats", recursive=TRUE, include.dirs=TRUE)
+```
+
+ - It made some files, and one (empty) directory: R.
+
+## Create a function
+
+ - Even though you've just spent ages creating funcions, lets make another one!  
+ - A really simple on this time:
+
+```{r}
+cat_function <- function(love=TRUE){
+    if(love==TRUE){
+        print("I love cats!")
+    }
+    else {
+        print("I am not a cool person.")
+    }
+}
+```
+
+ - Aside: look at how readable this function is!  We can figure out what it does without even running it.
+
+## Try it out
+
+ - Let's try it though, just for fun:
+
+```{r}
+cat_function(love=TRUE)
+cat_function(love=FALSE)
+cat_function()
+```
+
+ - That is pure fluffy goodness: I wish it was my function!
+
+## Write the function to a file
+
+ - We need to take the code for our function, and put in in a file in the "R" directory.
+ - Having gone to all the trouble of creating the function in R, I can't be bothered copying and pasting it into a file: `dump` is a pretty useful command:
+```{r}
+dump('cat_function', file='cats/R/cat_function.R')
+```
+ - Now we've got some actual content in our package.
+
+## Add some extra info to it
+
+ - We've not quite ready to create our package yet - we need documentation!
+ - Add the following to the top of your function file:
+
+```{r, eval=FALSE}
+#' A Cat Function
+#'
+#' This function allows you to express your love of cats.
+#' @param love Do you love cats? Defaults to TRUE.
+#' @keywords cats
+#' @export
+#' @examples
+#' cat_function()
+```
+
+ - The fancy syntax tells the `roxygen2` package how to handle our edits.
+
+```{r, echo=FALSE}
+
+x<-c("#' A Cat Function",
+     "#'",
+     "#' This function allows you to express your love of cats.",
+     "#' @param love Do you love cats? Defaults to TRUE.",
+     "#' @keywords cats",
+     "#' @export",
+     "#' @examples",
+     "#' cat_function()",
+     "")
+write(x, file='cats/R/cat_function.R')
+dump('cat_function', file='cats/R/cat_function.R', append=TRUE)
+```
+
+## Process your documentation
+
+ - The `document()` command from the `roxygen2` package uses the information we just provided to generate proper R documentation for our function - how cool is that?!
+
+```{r}
+setwd("./cats")
+document()
+```
+
+```{r, echo=FALSE}
+rm('cat_function')
+detach("package:cats", unload=TRUE)
+```
+
+## Install package
+
+ - Now we can install our very basic package (it only has one function...)
+
+```{r, eval=FALSE}
+setwd("..")
+install("cats")
+```
+
+```{r, echo=FALSE, message=FALSE}
+install('cats')
+```
+
+ - If you type `library()` you should now be able to see that the package is listed as being installed on your system.
+    - perhaps we need a little more documentation....
+
+## Test it out
+
+ - Try using `cat_function`
+   - Don't forget to load the library first... (might have to `rm('cat_function')` first)
+
+```{r, error=TRUE}
+cat_function()
+```
+
+```{r}
+library(cats)
+cat_function()
+```
+
+## Test your documentation
+
+ - How does the documentation look?
+
+```{r}
+?cat_function
+```
+
+ - Perhaps a little sparse....
+
+## Exercises
+
+ 1.  Add a description of what the package does to the DESCRIPTION file, and then reinstall the package.
+ 2.  Add (and document) a second function to the package.
+ 
+
