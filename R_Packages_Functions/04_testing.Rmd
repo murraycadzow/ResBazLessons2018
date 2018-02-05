@@ -1,18 +1,23 @@
 ---
 title: "R: Functions and Packages"
 subtitle: "Part 4: Testing"
-author: "Mik Black"
+author: "Mik Black & Murray Cadzow"
 date: "7 February 2018"
 output: ioslides_presentation
 ---
 
 ## Attribution
 
-Much of this content is adapted from Hadley Wickham's R packages book
-http://r-pkgs.had.co.nz/tests.html
+ - These slides are modified for Murray Cadzow's 2017 "testing" session.
+ - Much of this content is adapted from Hadley Wickham's R packages book:
 
-and from Karl Broman
-http://kbroman.org/pkg_primer/pages/tests.html
+    http://r-pkgs.had.co.nz/tests.html
+
+ - There is also content from Karl Broman:
+
+    http://kbroman.org/pkg_primer/pages/tests.html
+
+
 
 ## Getting set up
 
@@ -39,31 +44,29 @@ devtools::use_testthat()
 
 ```
 
-This creates
+The `use_testthat()` command:
 
-* A `tests/testthat` directory
+* creates a `tests/testthat` directory
 
-* Adds `testthat` to the Suggests field in the DESCRIPTION
+* adds `testthat` to the "Suggests"" field in the DESCRIPTION file
 
-* Creates a file `tests/testthat.R` that runs all your tests are when `R CMD check` runs
+* creates the file `tests/testthat.R` that runs all your tests are when `R CMD check` runs
 
-## The Tests Dir
+## The "tests" directory
 
 ```{r, eval = FALSE}
 list.files(path = "tests/", recursive=TRUE, include.dirs=TRUE)
 ```
 
-* The `tests` dir has `tests/testthat.R` and `tests/testthat/`
+* The `tests` directory contains `testthat.R` and `testthat/`
 
-* We create our tests to be run in `tests/testthat/`
+* We create our tests to be run in the `tests/testthat/` directory
 
 * The filenames start with "test", e.g., `test_cat_function.R`
 
-## tests/testthat.R
-
-This file tells test that to load the testthat library when testing
-
-and to go through the tests that are stored in `tests/testthat/`
+* The `tests/testthat.R` file tells `test` to: 
+     - load the `testthat` library when testing
+     - go through the tests that are stored in `tests/testthat/`
 
 ## Test structure
 

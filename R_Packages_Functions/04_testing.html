@@ -31,7 +31,7 @@
       // Author information
       presenters: [
             {
-        name:  'Mik Black' ,
+        name:  'Mik Black &amp; Murray Cadzow' ,
         company: '',
         gplus: '',
         twitter: '',
@@ -100,9 +100,15 @@
 
 <slide class=""><hgroup><h2>Attribution</h2></hgroup><article  id="attribution">
 
-<p>Much of this content is adapted from Hadley Wickham&#39;s R packages book <a href='http://r-pkgs.had.co.nz/tests.html' title=''>http://r-pkgs.had.co.nz/tests.html</a></p>
+<ul>
+<li>These slides are modified for Murray Cadzow&#39;s 2017 &quot;testing&quot; session.</li>
+<li><p>Much of this content is adapted from Hadley Wickham&#39;s R packages book:</p>
 
-<p>and from Karl Broman <a href='http://kbroman.org/pkg_primer/pages/tests.html' title=''>http://kbroman.org/pkg_primer/pages/tests.html</a></p>
+<p><a href='http://r-pkgs.had.co.nz/tests.html' title=''>http://r-pkgs.had.co.nz/tests.html</a></p></li>
+<li><p>There is also content from Karl Broman:</p>
+
+<p><a href='http://kbroman.org/pkg_primer/pages/tests.html' title=''>http://kbroman.org/pkg_primer/pages/tests.html</a></p></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Getting set up</h2></hgroup><article  id="getting-set-up">
 
@@ -120,29 +126,29 @@ library(testthat)</pre>
 
 <pre class = 'prettyprint lang-r'>devtools::use_testthat()</pre>
 
-<p>This creates</p>
+<p>The <code>use_testthat()</code> command:</p>
 
 <ul>
-<li><p>A <code>tests/testthat</code> directory</p></li>
-<li><p>Adds <code>testthat</code> to the Suggests field in the DESCRIPTION</p></li>
-<li><p>Creates a file <code>tests/testthat.R</code> that runs all your tests are when <code>R CMD check</code> runs</p></li>
+<li><p>creates a <code>tests/testthat</code> directory</p></li>
+<li><p>adds <code>testthat</code> to the &quot;Suggests&quot;&quot; field in the DESCRIPTION file</p></li>
+<li><p>creates the file <code>tests/testthat.R</code> that runs all your tests are when <code>R CMD check</code> runs</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The Tests Dir</h2></hgroup><article  id="the-tests-dir">
+</article></slide><slide class=""><hgroup><h2>The &quot;tests&quot; directory</h2></hgroup><article  id="the-tests-directory">
 
 <pre class = 'prettyprint lang-r'>list.files(path = &quot;tests/&quot;, recursive=TRUE, include.dirs=TRUE)</pre>
 
 <ul>
-<li><p>The <code>tests</code> dir has <code>tests/testthat.R</code> and <code>tests/testthat/</code></p></li>
-<li><p>We create our tests to be run in <code>tests/testthat/</code></p></li>
+<li><p>The <code>tests</code> directory contains <code>testthat.R</code> and <code>testthat/</code></p></li>
+<li><p>We create our tests to be run in the <code>tests/testthat/</code> directory</p></li>
 <li><p>The filenames start with &quot;test&quot;, e.g., <code>test_cat_function.R</code></p></li>
+<li>The <code>tests/testthat.R</code> file tells <code>test</code> to:
+
+<ul>
+<li>load the <code>testthat</code> library when testing</li>
+<li>go through the tests that are stored in <code>tests/testthat/</code></li>
+</ul></li>
 </ul>
-
-</article></slide><slide class=""><hgroup><h2>tests/testthat.R</h2></hgroup><article  id="teststestthat.r">
-
-<p>This file tells test that to load the testthat library when testing</p>
-
-<p>and to go through the tests that are stored in <code>tests/testthat/</code></p>
 
 </article></slide><slide class=""><hgroup><h2>Test structure</h2></hgroup><article  id="test-structure">
 
