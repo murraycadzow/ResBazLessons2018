@@ -94,11 +94,11 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">8 February 2017</p>
+            <p style="margin-top: 6px; margin-left: -2px;">7 February 2018</p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Congrats, you made a package&#8230;</h2></hgroup><article  id="congrats-you-made-a-package...">
+<slide class=""><hgroup><h2>Congrats, you made a package&#8230;</h2></hgroup><article  id="congrats-you-made-a-package...">
 
 <ul>
 <li>These lessons are NOT going to teach you how to become R package maestros.</li>
@@ -113,7 +113,7 @@
 <li>Note that Hadley&#39;s approach to creating packages is based on some additional functionality provided by RStudio: we haven&#39;t explicitly utilized that here (more later).</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Aside - it&#39;s a package, not a library&#8230;</h2></hgroup><article  id="aside---its-a-package-not-a-library...">
+</article></slide><slide class=""><hgroup><h2>Aside - it&#39;s a package, not a library&#8230;</h2></hgroup><article  id="aside---its-a-package-not-a-library...">
 
 <ul>
 <li>Just a minor point:
@@ -124,7 +124,7 @@
 </ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>What is in our package?</h2></hgroup><article  id="what-is-in-our-package">
+</article></slide><slide class=""><hgroup><h2>What is in our package?</h2></hgroup><article  id="what-is-in-our-package">
 
 <ul>
 <li>Code: the &#39;R&#39; directory</li>
@@ -145,7 +145,7 @@
 <li>RStudio project file: cats.Rproj (see next page)</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Aside - the RStudio project file</h2></hgroup><article  id="aside---the-rstudio-project-file">
+</article></slide><slide class=""><hgroup><h2>Aside - the RStudio project file</h2></hgroup><article  id="aside---the-rstudio-project-file">
 
 <ul>
 <li><code>cats.RProj</code>: text file created by <code>devtools</code>.</li>
@@ -153,7 +153,7 @@
 <li>Have a quick look at the content&#8230;</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>What else can be in there?</h2></hgroup><article  id="what-else-can-be-in-there">
+</article></slide><slide class=""><hgroup><h2>What else can be in there?</h2></hgroup><article  id="what-else-can-be-in-there">
 
 <ul>
 <li>Vignettes: detailed user manual for the package - THESE ARE GREAT!
@@ -169,7 +169,7 @@
 <li>Installed files: the &#39;inst&#39; directory.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Package distribution</h2></hgroup><article  id="package-distribution">
+</article></slide><slide class=""><hgroup><h2>Package distribution</h2></hgroup><article  id="package-distribution">
 
 <ul>
 <li>How can you share you package with others?</li>
@@ -181,18 +181,18 @@ devtools::build(&#39;cats&#39;)</pre>
 
 <pre >## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --no-site-file  \
 ##   --no-environ --no-save --no-restore --quiet CMD build  \
-##   &#39;/Users/black/GitHub/ResBazLessons2017/R_Packages_Functions/cats&#39;  \
+##   &#39;/Users/black/GitHub/ResBazLessons2018/R_Packages_Functions/cats&#39;  \
 ##   --no-resave-data --no-manual</pre>
 
 <pre >## </pre>
 
-<pre >## [1] &quot;/Users/black/GitHub/ResBazLessons2017/R_Packages_Functions/cats_0.0.0.9000.tar.gz&quot;</pre>
+<pre >## [1] &quot;/Users/black/GitHub/ResBazLessons2018/R_Packages_Functions/cats_0.0.0.9000.tar.gz&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>list.files(pattern=&quot;*.gz&quot;)</pre>
 
 <pre >## [1] &quot;cats_0.0.0.9000.tar.gz&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Sharing your package</h2></hgroup><article  id="sharing-your-package">
+</article></slide><slide class=""><hgroup><h2>Sharing your package</h2></hgroup><article  id="sharing-your-package">
 
 <ul>
 <li>Easy to share a version of your package with others.</li>
@@ -201,7 +201,7 @@ devtools::build(&#39;cats&#39;)</pre>
 <li>Perhaps time for some version control&#8230;.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Using Git and GitHub</h2></hgroup><article  id="using-git-and-github">
+</article></slide><slide class=""><hgroup><h2>Using Git and GitHub</h2></hgroup><article  id="using-git-and-github">
 
 <ul>
 <li>Git provides the ability to track changes to the files that make up your package.</li>
@@ -216,7 +216,7 @@ devtools::build(&#39;cats&#39;)</pre>
 <li>GitHub repo: <a href='https://github.com/klutometis/roxygen' title=''>https://github.com/klutometis/roxygen</a></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>The beauty of devtools&#8230;</h2></hgroup><article  id="the-beauty-of-devtools...">
+</article></slide><slide class=""><hgroup><h2>The beauty of devtools&#8230;</h2></hgroup><article  id="the-beauty-of-devtools...">
 
 <ul>
 <li><code>devtools</code> has made package development and distribution simple
@@ -239,7 +239,7 @@ devtools::build(&#39;cats&#39;)</pre>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

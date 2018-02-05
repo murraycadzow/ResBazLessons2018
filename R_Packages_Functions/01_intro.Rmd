@@ -2,7 +2,7 @@
 title: "R: Functions and Packages"
 subtitle: "Part 1: Overview and Introduction"
 author: "Mik Black"
-date: "8 February 2017"
+date: "7 February 2018"
 output: ioslides_presentation
 ---
 
@@ -84,3 +84,13 @@ devtools::install_github("klutometis/roxygen")
  - We'll use the Software Carpentry material on writing functions as a quick refresher:
  
   http://swcarpentry.github.io/r-novice-inflammation/02-func-R/
+  
+ - But first, a very basic function:
+ 
+```{r}
+squarePlusTwo <- function(x){
+  x^2 + 2
+}
+
+squarePlusTwo(4)
+```

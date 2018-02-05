@@ -94,11 +94,11 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">8 February 2017</p>
+            <p style="margin-top: 6px; margin-left: -2px;">7 February 2018</p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Before we start</h2></hgroup><article  id="before-we-start">
+<slide class=""><hgroup><h2>Before we start</h2></hgroup><article  id="before-we-start">
 
 <ul>
 <li>There is a perfectly good Software Carpentry lesson on creating R packages, but we will not be using it:</li>
@@ -112,7 +112,7 @@
 <li><p>I really just wanted a reason to show you Hilary&#39;s &quot;cat cup&quot;.</p></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Attribution</h2></hgroup><article  id="attribution">
+</article></slide><slide class=""><hgroup><h2>Attribution</h2></hgroup><article  id="attribution">
 
 <p><img src="https://hilaryparker.files.wordpress.com/2014/10/cropped-img_20140902_1804591.jpg" height="300"></p>
 
@@ -120,7 +120,7 @@
 
 <p><a href='http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/' title=''>http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/</a></p>
 
-</article></slide><slide class=''><hgroup><h2>Getting ready</h2></hgroup><article  id="getting-ready">
+</article></slide><slide class=""><hgroup><h2>Getting ready</h2></hgroup><article  id="getting-ready">
 
 <ul>
 <li>To get started, we need to install the <code>devtools</code> and <code>roxygen</code> packages.</li>
@@ -136,7 +136,7 @@ library(roxygen2)</pre>
 <li><code>roxygen2</code> (Hadley Wickham, Peter Danenberg &amp; Manuel Eugster): In-source Documentation for R</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Setting up</h2></hgroup><article  id="setting-up">
+</article></slide><slide class=""><hgroup><h2>Setting up</h2></hgroup><article  id="setting-up">
 
 <ul>
 <li>Use the <code>create()</code> function from <code>devtools</code> to set up a basic package structure:</li>
@@ -144,7 +144,7 @@ library(roxygen2)</pre>
 
 <pre class = 'prettyprint lang-r'>create(&quot;cats&quot;)</pre>
 
-<pre >## Creating package &#39;cats&#39; in &#39;/Users/black/GitHub/ResBazLessons2017/R_Packages_Functions&#39;</pre>
+<pre >## Creating package &#39;cats&#39; in &#39;/Users/black/GitHub/ResBazLessons2018/R_Packages_Functions&#39;</pre>
 
 <pre >## No DESCRIPTION found. Creating with values:</pre>
 
@@ -153,7 +153,7 @@ library(roxygen2)</pre>
 ## Version: 0.0.0.9000
 ## Authors@R: person(&quot;First&quot;, &quot;Last&quot;, email = &quot;first.last@example.com&quot;, role = c(&quot;aut&quot;, &quot;cre&quot;))
 ## Description: What the package does (one paragraph).
-## Depends: R (&gt;= 3.3.2)
+## Depends: R (&gt;= 3.4.3)
 ## License: What license is it under?
 ## Encoding: UTF-8
 ## LazyData: true</pre>
@@ -162,7 +162,7 @@ library(roxygen2)</pre>
 
 <pre >## * Adding `.Rproj.user`, `.Rhistory`, `.RData` to ./.gitignore</pre>
 
-</article></slide><slide class=''><hgroup><h2>What did that do?</h2></hgroup><article  id="what-did-that-do">
+</article></slide><slide class=""><hgroup><h2>What did that do?</h2></hgroup><article  id="what-did-that-do">
 
 <ul>
 <li>Have a look at the &quot;cats&quot; folder, inside your working directory (you set that to a sensible place, right?) to see what the <code>create()</code> command did:</li>
@@ -176,7 +176,7 @@ library(roxygen2)</pre>
 <li>It made some files, and one (empty) directory: R.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Create a function</h2></hgroup><article  id="create-a-function">
+</article></slide><slide class=""><hgroup><h2>Create a function</h2></hgroup><article  id="create-a-function">
 
 <ul>
 <li>Even though you&#39;ve just spent ages creating funcions, lets make another one!<br/></li>
@@ -196,7 +196,7 @@ library(roxygen2)</pre>
 <li>Aside: look at how readable this function is! We can figure out what it does without even running it.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Try it out</h2></hgroup><article  id="try-it-out">
+</article></slide><slide class=""><hgroup><h2>Try it out</h2></hgroup><article  id="try-it-out">
 
 <ul>
 <li>Let&#39;s try it though, just for fun:</li>
@@ -218,7 +218,7 @@ library(roxygen2)</pre>
 <li>That is pure fluffy goodness: I wish it was my function!</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Write the function to a file</h2></hgroup><article  id="write-the-function-to-a-file">
+</article></slide><slide class=""><hgroup><h2>Write the function to a file</h2></hgroup><article  id="write-the-function-to-a-file">
 
 <ul>
 <li>We need to take the code for our function, and put in in a file in the &quot;R&quot; directory.</li>
@@ -231,7 +231,7 @@ library(roxygen2)</pre>
 <li>Now we&#39;ve got some actual content in our package.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Add some extra info to it</h2></hgroup><article  id="add-some-extra-info-to-it">
+</article></slide><slide class=""><hgroup><h2>Add some extra info to it</h2></hgroup><article  id="add-some-extra-info-to-it">
 
 <ul>
 <li>We&#39;ve not quite ready to create our package yet - we need documentation!</li>
@@ -251,7 +251,7 @@ library(roxygen2)</pre>
 <li>The fancy syntax tells the <code>roxygen2</code> package how to handle our edits.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Process your documentation</h2></hgroup><article  id="process-your-documentation">
+</article></slide><slide class=""><hgroup><h2>Process your documentation</h2></hgroup><article  id="process-your-documentation">
 
 <ul>
 <li>The <code>document()</code> command from the <code>roxygen2</code> package uses the information we just provided to generate proper R documentation for our function - how cool is that?!</li>
@@ -264,12 +264,12 @@ document()</pre>
 
 <pre >## Loading cats</pre>
 
-<pre >## Updating roxygen version in /Users/black/GitHub/ResBazLessons2017/R_Packages_Functions/cats/DESCRIPTION</pre>
+<pre >## Updating roxygen version in /Users/black/GitHub/ResBazLessons2018/R_Packages_Functions/cats/DESCRIPTION</pre>
 
 <pre >## Writing NAMESPACE
 ## Writing cat_function.Rd</pre>
 
-</article></slide><slide class=''><hgroup><h2>Install package</h2></hgroup><article  id="install-package">
+</article></slide><slide class=""><hgroup><h2>Install package</h2></hgroup><article  id="install-package">
 
 <ul>
 <li>Now we can install our very basic package (it only has one function&#8230;)</li>
@@ -286,7 +286,7 @@ install(&quot;cats&quot;)</pre>
 </ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Test it out</h2></hgroup><article  id="test-it-out">
+</article></slide><slide class=""><hgroup><h2>Test it out</h2></hgroup><article  id="test-it-out">
 
 <ul>
 <li>Try using <code>cat_function</code></li>
@@ -295,14 +295,14 @@ install(&quot;cats&quot;)</pre>
 
 <pre class = 'prettyprint lang-r'>cat_function()</pre>
 
-<pre >## Error in eval(expr, envir, enclos): could not find function &quot;cat_function&quot;</pre>
+<pre >## Error in cat_function(): could not find function &quot;cat_function&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>library(cats)
 cat_function()</pre>
 
 <pre >## [1] &quot;I love cats!&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Test your documentation</h2></hgroup><article  id="test-your-documentation">
+</article></slide><slide class=""><hgroup><h2>Test your documentation</h2></hgroup><article  id="test-your-documentation">
 
 <ul>
 <li>How does the documentation look?</li>
@@ -314,7 +314,7 @@ cat_function()</pre>
 <li>Perhaps a little sparse&#8230;.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Exercises</h2></hgroup><article  id="exercises">
+</article></slide><slide class=""><hgroup><h2>Exercises</h2></hgroup><article  id="exercises">
 
 <ol>
 <li>Add a description of what the package does to the DESCRIPTION file, and then reinstall the package.</li>
@@ -331,7 +331,7 @@ cat_function()</pre>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

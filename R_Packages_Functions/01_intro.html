@@ -94,11 +94,11 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">8 February 2017</p>
+            <p style="margin-top: 6px; margin-left: -2px;">7 February 2018</p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Overview - what will we cover?</h2></hgroup><article  id="overview---what-will-we-cover">
+<slide class=""><hgroup><h2>Overview - what will we cover?</h2></hgroup><article  id="overview---what-will-we-cover">
 
 <ul>
 <li>Writing functions in R</li>
@@ -108,7 +108,7 @@
 <li>Testing</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Aside - some awesomeness</h2></hgroup><article  id="aside---some-awesomeness">
+</article></slide><slide class=""><hgroup><h2>Aside - some awesomeness</h2></hgroup><article  id="aside---some-awesomeness">
 
 <ul>
 <li><p>Karl Broman&#39;s (<a href='https://twitter.com/kwbroman' title=''>@kwbroman</a>) &quot;Tools for Reproducible Research&quot; course is awesome:</p>
@@ -119,7 +119,7 @@
 <li><p>Many of the things we&#39;ll talk about her have been borrowed from Karl&#39;s excellent lectures.</p></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Another aside - packages to install</h2></hgroup><article  id="another-aside---packages-to-install">
+</article></slide><slide class=""><hgroup><h2>Another aside - packages to install</h2></hgroup><article  id="another-aside---packages-to-install">
 
 <ul>
 <li>Later in the lesson we&#39;ll be using the following R packages:
@@ -139,7 +139,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 <li>Maybe fire up RStudio and do this now, to avoid a logjam later&#8230;</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Introduction - functions</h2></hgroup><article  id="introduction---functions">
+</article></slide><slide class=""><hgroup><h2>Introduction - functions</h2></hgroup><article  id="introduction---functions">
 
 <ul>
 <li>In R, internal and library functions provide users with access to powerful analytic tools.</li>
@@ -147,7 +147,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 <li>Even relatively inexperienced R users are fairly quick to adopt the idea of loading packages to gain access to powerful collections of functions.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Writing our own functions</h2></hgroup><article  id="writing-our-own-functions">
+</article></slide><slide class=""><hgroup><h2>Writing our own functions</h2></hgroup><article  id="writing-our-own-functions">
 
 <ul>
 <li>Despite our love of other people&#39;s functions, it often takes R users a while to start writing their own functions, despite there being a number of benefits:
@@ -160,7 +160,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 </ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Why don&#39;t we do it more?</h2></hgroup><article  id="why-dont-we-do-it-more">
+</article></slide><slide class=""><hgroup><h2>Why don&#39;t we do it more?</h2></hgroup><article  id="why-dont-we-do-it-more">
 
 <ul>
 <li>Time: it takes extra time to turn something into a function (but not much).</li>
@@ -168,7 +168,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 <li>Focus: R users are generally not trained programmers - our focus is on using code to achieve a goal, and that goal is not to create &quot;elegant, well-written, re-usable&quot; code. It is generally about trying to answer a scientific question.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Why SHOULD we write functions?</h2></hgroup><article  id="why-should-we-write-functions">
+</article></slide><slide class=""><hgroup><h2>Why SHOULD we write functions?</h2></hgroup><article  id="why-should-we-write-functions">
 
 <ul>
 <li>I am not even going to tell you how many times I have typed the same code across different projects&#8230;<br/></li>
@@ -177,7 +177,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 <li>And once you get into the habit of creating your own functions, it will make you a better programmer.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Packages</h2></hgroup><article  id="packages">
+</article></slide><slide class=""><hgroup><h2>Packages</h2></hgroup><article  id="packages">
 
 <ul>
 <li>Once you&#39;ve written some functions that you use regularly, it is a simple step to turn them into a package.</li>
@@ -186,7 +186,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 <li>Makes sharing easier - others can use your functions by simply installing your package.</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Resources</h2></hgroup><article  id="resources">
+</article></slide><slide class=""><hgroup><h2>Resources</h2></hgroup><article  id="resources">
 
 <ul>
 <li>Hadley Wickham (<a href='https://twitter.com/hadleywickham' title=''>@hadleywickham</a>) has produced some excellent material on coding style and package creation:
@@ -197,13 +197,25 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
 </ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Lets write some functions&#8230;.</h2></hgroup><article  id="lets-write-some-functions....">
+</article></slide><slide class=""><hgroup><h2>Lets write some functions&#8230;.</h2></hgroup><article  id="lets-write-some-functions....">
 
 <ul>
 <li>We&#39;ll use the Software Carpentry material on writing functions as a quick refresher:</li>
 </ul>
 
-<p><a href='http://swcarpentry.github.io/r-novice-inflammation/02-func-R/' title=''>http://swcarpentry.github.io/r-novice-inflammation/02-func-R/</a></p></article></slide>
+<p><a href='http://swcarpentry.github.io/r-novice-inflammation/02-func-R/' title=''>http://swcarpentry.github.io/r-novice-inflammation/02-func-R/</a></p>
+
+<ul>
+<li>But first, a very basic function:</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>squarePlusTwo &lt;- function(x){
+  x^2 + 2
+}
+
+squarePlusTwo(4)</pre>
+
+<pre >## [1] 18</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
@@ -215,7 +227,7 @@ devtools::install_github(&quot;klutometis/roxygen&quot;)</pre>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
