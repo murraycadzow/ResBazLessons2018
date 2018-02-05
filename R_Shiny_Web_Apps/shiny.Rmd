@@ -1,7 +1,7 @@
 ---
 title: "R-based web apps with Shiny"
 author: "Mik Black"
-date: "4 February 2016"
+date: "7 February 2018"
 output: html_document
 ---
 
