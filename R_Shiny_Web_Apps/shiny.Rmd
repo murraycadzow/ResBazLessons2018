@@ -20,13 +20,13 @@ install.packages('shiny')
 
 The RStudio website provides a lot of information on how to use shiny:
 
-http://shiny.rstudio.com/
+ - http://shiny.rstudio.com/
 
-http://shiny.rstudio.com/tutorial/
+ - http://shiny.rstudio.com/tutorial/
 
 They also provide a gallery of shiny apps:
 
-http://shiny.rstudio.com/gallery/
+ - http://shiny.rstudio.com/gallery/
 
 ## What does shiny do?
 
@@ -34,83 +34,95 @@ The shiny packages allows users to create incricate (or simple) interactive web 
 
 All code is written in R, so there is no need to use web-specific tools such as javascript or CSS.
 
-Over the past two years, shiny has become an incredibly popular tool for generating interactive web pages, and a huge number of powerful and compelling interfaces have been created.
+Over the past three years, shiny has become an incredibly popular tool for generating interactive web pages, and a huge number of powerful and compelling interfaces have been created.
 
 ## Shiny components
 
-A shiny application requires two files:
+Two options:
+ 
+ - Two files (older way to do things):
+   - `ui.R` defines the user interface (i.e., how the user will interact with the web page).
+   - `server.R` defines the content (i.e., the data, visualisations and analyses the user will be interacting with)
 
- - ui.R defines the user interface (i.e., how the user will interact with the web page).
- - server.R defines the content (i.e., the data, visualisations and analyses the user will be interacting with)
+ - Single file (more recent): 
+   - `app.R` contains the information for both the user interface and the content.
+   - within the `app.R` file, this information is stored as `ui` and `server` objects.
 
-The tutorial on the RStudio site provides these files for a simple shiny app.
+The tutorial on the RStudio site provides example code for a simple shiny app:
+
+http://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
 
 We're going to simplify even further - rather than start with an existing app, we'll generate some plots in R, and then figure out how to place them within a shiny app.
 
 Once we've got a basic interface in place, we'll gradually add elements to extend the functionality.
 
-## Example ui.R code
+## Example ui code
 
-Taken from: http://shiny.rstudio.com/tutorial/
+Taken from: http://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
 
 ```{r, eval=FALSE}
+library(shiny)
 
+# Define UI for app that draws a histogram ----
+ui <- fluidPage(
 
-shinyUI(bootstrapPage(
+  # App title ----
+  titlePanel("Hello Shiny!"),
 
-  selectInput(inputId = "n_breaks",
-      label = "Number of bins in histogram (approximate):",
-      choices = c(10, 20, 35, 50),
-      selected = 20),
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
 
-  checkboxInput(inputId = "individual_obs",
-      label = strong("Show individual observations"),
-      value = FALSE),
+    # Sidebar panel for inputs ----
+    sidebarPanel(
 
-  checkboxInput(inputId = "density",
-      label = strong("Show density estimate"),
-      value = FALSE),
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
 
-  plotOutput(outputId = "main_plot", height = "300px"),
+    ),
 
-  # Display this only if the density is shown
-  conditionalPanel(condition = "input.density == true",
-    sliderInput(inputId = "bw_adjust",
-        label = "Bandwidth adjustment:",
-        min = 0.2, max = 2, value = 1, step = 0.2)
+    # Main panel for displaying outputs ----
+    mainPanel(
+
+      # Output: Histogram ----
+      plotOutput(outputId = "distPlot")
+
+    )
   )
-
-))
-
+)
 ```
 
-## Example server.R code
+## Example server code
 
-Taken from: http://shiny.rstudio.com/tutorial/
+Taken from: http://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
 
 ```{r, eval=FALSE}
-shinyServer(function(input, output) {
+# Define server logic required to draw a histogram ----
+server <- function(input, output) {
 
-  output$main_plot <- renderPlot({
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is "reactive" and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot <- renderPlot({
 
-    hist(faithful$eruptions,
-      probability = TRUE,
-      breaks = as.numeric(input$n_breaks),
-      xlab = "Duration (minutes)",
-      main = "Geyser eruption duration")
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
 
-    if (input$individual_obs) {
-      rug(faithful$eruptions)
-    }
+    hist(x, breaks = bins, col = "#75AADB", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
 
-    if (input$density) {
-      dens <- density(faithful$eruptions,
-          adjust = input$bw_adjust)
-      lines(dens, col = "blue")
-    }
+    })
 
-  })
-})
+}
 ```
 
 ## Can we make it more simple?
@@ -141,14 +153,11 @@ hist(cars[ , "speed"])
 
 ## Creating a VERY basic shiny app: content
 
-server.R file:
+`server` object:
 
 ```{r, eval=FALSE}
-## Load the "cars" data set
-data(cars)
-
 ## Create the function to be excuted by shiny 
-shinyServer(function(input, output) {
+server <- shinyServer(function(input, output) {
   
   ## Define an object called "main_plot" that will be drawn 
   ## by the "renderPlot" function
@@ -156,31 +165,48 @@ shinyServer(function(input, output) {
     
     ## Specify the plot that will be generated
     hist(cars[,"speed"])
-    })
-  
   })
+  
+})
 ```
 
 ## Creating a VERY basic shiny app: interface
 
 Initially we have no need for an interface - the plot we are generating is fixed.
 
-ui.R file:
+`ui` object:
 
 ```{r, eval=FALSE}
-shinyUI(bootstrapPage(
+ui <- fluidPage(
   
   ## Tell shiny what to plot - the "main_plot" object 
   ## associated with "output" generated
   ## by the server.R file
   plotOutput(outputId = "main_plot")
   
-  ))
+)
 ```
+
+## Defining ui and server for Shiny
+
+The final part of the `app.R` file tells the `Shiny` package about the `ui` and `server` components:
+
+```{r, eval=FALSE}
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+This is placed at the bottom of the `app.R` file, after the `ui` and `server` objects have been defined.
 
 ## Running the app
 
-Create a directory called "carsApp", and place the ui.R and server.R files in that directory (i.e., copy and paste the code above into files called ui.R and server.R in a directory called "carsApp").
+Create a directory called "carsApp", and place the `app.R` file in that directory (i.e., copy and paste the code above into a file called `app.R` in a directory called "carsApp").  You'll also need to load the
+`cars` data set.  To do this, add the following lines to the top of the `app.R` file:
+
+```{r eval=FALSE}
+## Load the "cars" data set
+data(cars)
+```
 
 In R, load the shiny package, and run the app:
 
@@ -204,8 +230,8 @@ Add an option to choose which variable to plot (speed or dist).
 First update the interface:
 
 ```{r, eval=FALSE}
-shinyUI(bootstrapPage(
-  
+ui <- fluidPage(
+
   ## Add a pull-down menu to allow selection of
   ## the variable to be plotted
   selectInput(inputId = "plot_var",
@@ -218,7 +244,7 @@ shinyUI(bootstrapPage(
   ## by the server.R file
   plotOutput(outputId = "main_plot")
   
-  ))
+)
 ```
 
 Then modify the server.R file to accommodate the new information. Specifically, we edit the line:
@@ -235,24 +261,21 @@ hist(cars[,input$plot_var])
 
 This tells the `hist` command to plot the data specified by `plot_var` from the `input` object (specified in ui.R).
 
-The server.R file becomes:
+The `server` object code becomes:
 
 ```{r, eval=FALSE}
-## Load the "cars" data set
-data(cars)
-
 ## Create the function to be excuted by shiny 
-shinyServer(function(input, output) {
+server <- function(input, output) {
   
-  ## Define an object called "main_plot" that will 
-  ## be drawn by the "renderPlot" function
+  ## Define an object called "main_plot" that will be drawn 
+  ## by the "renderPlot" function
   output$main_plot <- renderPlot({
     
     ## Specify the plot that will be generated
     hist(cars[,input$plot_var])
-    })
-  
   })
+  
+}
 ```
 
 ## Test the new app
@@ -271,36 +294,37 @@ By changing the details in the ui.R file, we can change the layout (and look) of
 
 A common approach to application design is to provide a "side bar" on the left of the screen for users to interact with - this then alters the content being displayed on the right.
 
-Edit the ui.R file:
+Edit the `ui` object code:
 
 ```{r, eval=FALSE}
-## Use a different page style (add a sidebar)
-shinyUI(pageWithSidebar(
+ui <- fluidPage(
   
   ## Give the application a title
   headerPanel("My awesome plotting app"),
   
-  ## Put the input controls in a sidebar 
+  ## Put the input controls in a sidebar panel
   sidebarPanel(
-    
-    selectInput(inputId = "plot_var",
-                label = "Variable to plot",
-                choices = c("speed", "dist"),
-                selected = "speed")
-    ),
   
-  ## Put the outout in the main panel
+  ## Add a pull-down menu to allow selection of
+  ## the variable to be plotted
+  selectInput(inputId = "plot_var",
+              label = "Variable to plot",
+              choices = c("speed", "dist"),
+              selected = "speed")
+  ),
+  
+  ## Tell shiny what to plot - the "main_plot" object 
+  ## associated with "output" generated
+  ## by the server.R file
   mainPanel(
     
     ## Give the panel a name
     h4("Plot of cars data"),
     
-    ## Tell shiny what to plot - the "main_plot" object 
-    ## associated with "output" generated
-    ## by the server.R file
     plotOutput(outputId = "main_plot")
-    )
-  ))
+  )
+  
+)
 ```
 
 Lets see how our updated app looks:
@@ -311,7 +335,7 @@ runApp('carsApp')
 
 ## Lets get some more interactivity
 
-Add the following to the ui.R file below the current `selectInput` statement:
+Add the following to the `ui` object code below the current `selectInput` statement:
 
 ```{r, eval=FALSE}
 sliderInput(inputId = "nbins",
@@ -328,7 +352,7 @@ Note that you'll need to add a comma to the last line of the `selectInput`, that
 selected = "speed"),
 ```
 
-Now we need to update the server.R file to use this new information.  Replace the line:
+Now we need to update the `server` object code to use this new information.  Replace the line:
 
 ```{r, eval=FALSE}
 hist(cars[,input$plot_var])
