@@ -407,14 +407,14 @@ server &lt;- function(input, output) {
 </div>
 <div id="getting-fancier---adding-tabs" class="section level2">
 <h2>Getting fancier - adding tabs:</h2>
-<p>Create something new to plot in server.R (add below the existing plotting code):</p>
+<p>Create something new to plot in <code>server</code> (add below the existing plotting code):</p>
 <pre class="r"><code>  ## Define a second plot
   output$second_plot &lt;- renderPlot({
 
       ## Specify the plot that will be generated
       boxplot(cars[,input$plot_var])
   })</code></pre>
-<p>Now alter the “mainPanel” section of ui.R to add information about tabs:</p>
+<p>Now alter the “mainPanel” section of <code>ui</code> to add information about tabs:</p>
 <pre class="r"><code>  mainPanel(
 
     ## Add tabs
@@ -434,7 +434,7 @@ server &lt;- function(input, output) {
      
     )
   )</code></pre>
-<p>Note that the <code>outputId</code> defined in <code>server.R</code> is being used to determine which output to include on each tab.</p>
+<p>Note that the <code>outputId</code> defined in the <code>server</code> object code is being used to determine which output to include on each tab.</p>
 <p>Run the app - this is getting cooler.</p>
 <pre class="r"><code>runApp('carsApp')</code></pre>
 </div>
@@ -442,8 +442,8 @@ server &lt;- function(input, output) {
 <h2>Conditioning</h2>
 <p>Shiny also provides the ability to “conditionally” display input selectors.</p>
 <p>In our current app, the slider input remains visible when the boxplot tab is being viewed, even though it is not relevant for that plot (and moving it has no impact).</p>
-<p>To ensure that the slider only appears for the histogram panel, alter the ui.R file to specify when it should be displayed.</p>
-<p>The sidebarPanel section of ui.r now becomes:</p>
+<p>To ensure that the slider only appears for the histogram panel, alter the <code>ui</code> object code to specify when it should be displayed.</p>
+<p>The sidebarPanel section of the <code>ui</code> code now becomes:</p>
 <pre class="r"><code>sidebarPanel(
     
   selectInput(inputId = &quot;plot_var&quot;,
@@ -519,7 +519,7 @@ server &lt;- function(input, output) {
 <p>There are also a number of more detailed articles available:</p>
 <p><a href="http://shiny.rstudio.com/articles/" class="uri">http://shiny.rstudio.com/articles/</a></p>
 <p>plus an excellent shiny cheatsheet in PDF format that you can download:</p>
-<p><a href="http://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf</a></p>
+<p><a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf" class="uri">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a></p>
 </div>
 
 

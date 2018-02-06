@@ -372,7 +372,7 @@ runApp('carsApp')
 
 ## Getting fancier - adding tabs:
 
-Create something new to plot in server.R (add below the existing plotting code):
+Create something new to plot in `server` (add below the existing plotting code):
 
 ```{r, eval=FALSE}
   ## Define a second plot
@@ -383,7 +383,7 @@ Create something new to plot in server.R (add below the existing plotting code):
   })
 ```
 
-Now alter the "mainPanel" section of ui.R to add information about tabs:
+Now alter the "mainPanel" section of `ui` to add information about tabs:
 
 ```{r, eval=FALSE}
   mainPanel(
@@ -407,7 +407,7 @@ Now alter the "mainPanel" section of ui.R to add information about tabs:
   )
 ```
 
-Note that the `outputId` defined in `server.R` is being used to determine which output to include on each tab.
+Note that the `outputId` defined in the `server` object code is being used to determine which output to include on each tab.
 
 Run the app - this is getting cooler.
 
@@ -421,9 +421,9 @@ Shiny also provides the ability to "conditionally" display input selectors.
 
 In our current app, the slider input remains visible when the boxplot tab is being viewed, even though it is not relevant for that plot (and moving it has no impact).
 
-To ensure that the slider only appears for the histogram panel, alter the ui.R file to specify when it should be displayed.
+To ensure that the slider only appears for the histogram panel, alter the `ui` object code to specify when it should be displayed.
 
-The sidebarPanel section of ui.r now becomes:
+The sidebarPanel section of the `ui` code now becomes:
 
 ```{r, eval=FALSE}
 sidebarPanel(
@@ -527,7 +527,9 @@ http://shiny.rstudio.com/articles/
 
 plus an excellent shiny cheatsheet in PDF format that you can download:
 
-http://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf
+
+https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
+
 
 
 
