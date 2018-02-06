@@ -200,4 +200,19 @@ Variations of expect_match() allow you to check for:
 
 ## Cats example
 
-Lets make a test for our cats function
+ - Lets make a test for our cats function.
+ 
+```{r, eval=FALSE}
+devtools::use_testthat()
+```
+
+ - How would you check to make sure the function's output is correct?  
+ - Write a function to test the output of `cats_function()`, and put it in a file called `testcats.R`
+ in the `tests/testthat` directory.
+ - Run your test via:
+ 
+```{r, eval=FALSE}
+devtools::test()
+``` 
+ 
+ 
