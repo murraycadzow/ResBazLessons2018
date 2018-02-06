@@ -521,6 +521,29 @@ server &lt;- function(input, output) {
 <p>plus an excellent shiny cheatsheet in PDF format that you can download:</p>
 <p><a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf" class="uri">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a></p>
 </div>
+<div id="testing-shiny-apps" class="section level2">
+<h2>Testing Shiny apps</h2>
+<p>Getting a Shiny application up and running can be a major achievement, particularly if it provides a tool that makes life easier for yourself or others.</p>
+<p>At some point however, you’re going to want to make some changes:</p>
+<ul>
+<li>changing the underlying code</li>
+<li>upgrading R and/or the packages used by your application</li>
+</ul>
+<p>Either of these actions have the potential to change the behaviour of our application, possibly in ways that you do not anticipate.</p>
+<p>The <code>shinytest</code> packge is a relatively new set of tools which provide the ability to define a series of tests that produce a specific “snapshot” of the application’s behaviour. These tests can be run at any time, with the results they produce compared back to the baseline snapshot.<br />
+Any differences can then be identified, and (if necessary) the source of the issue can be tracked down.</p>
+<p>In order to install the <code>shinytest</code> package, you can run the following code:</p>
+<pre class="r"><code>devtools::install_github(&quot;rstudio/shinytest&quot;)
+webdriver::install_phantomjs()</code></pre>
+<p>To record an initial test, run:</p>
+<pre class="r"><code>library(shinytest)
+recordTest('carsApp')</code></pre>
+<p>This opens your Shiny application within a graphical interface, so that you can record your interaction with it. This defines the “test”, which is captured within the <code>tests</code> directory in the file <code>carsAppTest.R</code>. The baseline output is saved in the <code>carsAppTest-expected</code> directory, with the results of the test saved as .json and .png files (one pair per test).</p>
+<p>Running the following code will run the tests, and identify any differences between the current outputs, and those captured at baseline.</p>
+<pre class="r"><code>testApp(&quot;carsApp&quot;, &quot;carsAppTest.R&quot;)</code></pre>
+<p>A good guide for getting started with <code>shinytest</code> if the following website;</p>
+<p><a href="https://rstudio.github.io/shinytest/articles/shinytest.html" class="uri">https://rstudio.github.io/shinytest/articles/shinytest.html</a></p>
+</div>
 
 
 

@@ -527,10 +527,56 @@ http://shiny.rstudio.com/articles/
 
 plus an excellent shiny cheatsheet in PDF format that you can download:
 
-
 https://shiny.rstudio.com/images/shiny-cheatsheet.pdf
 
+## Testing Shiny apps
 
+Getting a Shiny application up and running can be a major achievement, particularly 
+if it provides a tool that makes life easier for yourself or others.
+
+At some point however, you're going to want to make some changes:
+
+ - changing the underlying code
+ - upgrading R and/or the packages used by your application
+ 
+Either of these actions have the potential to change the behaviour of our application, 
+possibly in ways that you do not anticipate.
+
+The `shinytest` packge is a relatively new set of tools which provide the ability to define a 
+series of tests that produce a specific "snapshot" of the application's behaviour.  These tests
+can be run at any time, with the results they produce compared back to the baseline snapshot.  
+Any differences can then be identified, and (if necessary) the source of the issue can be 
+tracked down.
+
+In order to install the `shinytest` package, you can run the following code:
+
+```{r, eval=FALSE}
+devtools::install_github("rstudio/shinytest")
+webdriver::install_phantomjs()
+```
+
+To record an initial test, run:
+
+```{r, eval=FALSE}
+library(shinytest)
+recordTest('carsApp')
+```
+
+This opens your Shiny application within a graphical interface, so that you can record 
+your interaction with it.  This defines the "test", which is captured within the `tests` 
+directory in the file `carsAppTest.R`.  The baseline output is saved in the `carsAppTest-expected`
+directory, with the results of the test saved as .json and .png files (one pair per test).
+
+Running the following code will run the tests, and identify any differences between the current
+outputs, and those captured at baseline.
+
+```{r, eval=FALSE}
+testApp("carsApp", "carsAppTest.R")
+```
+
+A good guide for getting started with `shinytest` if the following website;
+
+https://rstudio.github.io/shinytest/articles/shinytest.html
 
 
 
