@@ -22,7 +22,7 @@ output: ioslides_presentation
     
     https://github.com/kbroman
  
- - Many of the things we'll talk about her have been borrowed from Karl's excellent lectures.
+ - Many of the things we'll talk about here have been borrowed from Karl's excellent lectures.
  
 ## Another aside - packages to install
 
