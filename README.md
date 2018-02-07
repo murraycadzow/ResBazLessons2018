@@ -10,7 +10,7 @@
     - CASTLE B: http://pad.software-carpentry.org/2018-02-07-dunedin-castleB
     - BURNS 4: http://pad.software-carpentry.org/2018-02-07-dunedin-burns4
 
-(Some) none-SWC lesson material:
+(Some) non-SWC lesson material:
 
  - [R packages and functions](https://github.com/mikblack/ResBazLessons2018/tree/master/R_Packages_Functions) 
 
