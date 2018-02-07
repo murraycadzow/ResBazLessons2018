@@ -15,3 +15,5 @@
  - [R packages and functions](https://github.com/mikblack/ResBazLessons2018/tree/master/R_Packages_Functions) 
 
  - [Shiny Apps in R](https://github.com/mikblack/ResBazLessons2018/tree/master/R_Shiny_Web_Apps) 
+ 
+ - [Mik and Murray's talk about RStudio:conf 2018](https://github.com/mikblack/ResBaz2018-talks#README.md)
