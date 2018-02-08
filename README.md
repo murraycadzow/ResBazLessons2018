@@ -17,3 +17,5 @@
  - [Shiny Apps in R](https://github.com/mikblack/ResBazLessons2018/tree/master/R_Shiny_Web_Apps) 
  
  - [Mik and Murray's talk about RStudio:conf 2018](https://github.com/mikblack/ResBaz2018-talks#README.md)
+ 
+ - [Advanced shell/ intro LaTeX etherpad](https://public.etherpad-mozilla.org/p/2018-02-08-resbaz-DUD-advanced-shell)
